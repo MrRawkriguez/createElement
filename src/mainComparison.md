@@ -172,3 +172,100 @@ root.render(
 - **Version 1**: The standard and recommended approach for most React applications.
 - **Version 2**: Useful for understanding how JSX compiles into `React.createElement`.
 - **Version 3**: Debugging purposes or inspecting how React elements are structured, though it contains an error in rendering.
+
+### **Version 4**
+
+```jsx
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+const root = createRoot(document.getElementById('root'))
+const reactElement = <h1>Hello from JSX!</h1>
+
+console.log(reactElement)
+
+root.render(
+  reactElement
+)
+```
+
+---
+
+### **1. Key Features in Version 4**
+
+1. **Imports Required Modules**:
+   - `createRoot` from `react-dom/client`: Used to initialize React's rendering system in React 18+.
+   - `./index.css`: Applies global styles to the application.
+   - `App` from `./App.jsx`: Though imported, `App` isn't used in this example, but it could represent your main React component.
+
+2. **Creates a React Root**:
+   - `createRoot(document.getElementById('root'))`: Initializes a React root to render content inside the `#root` element of your `index.html`.
+
+3. **Uses JSX to Create a React Element**:
+   - `const reactElement = <h1>Hello from JSX!</h1>`:
+     - Uses **JSX** (JavaScript XML) to define a `ReactElement`.
+     - This is a concise and readable way of defining UI elements in React.
+     - Behind the scenes, JSX compiles to `React.createElement("h1", null, "Hello from JSX!")`.
+
+4. **Logs the React Element**:
+   - `console.log(reactElement)` logs the React element object:
+     ```javascript
+     {
+       type: "h1",
+       props: { children: "Hello from JSX!" },
+       key: null,
+       ref: null
+     }
+     ```
+     This shows the internal structure of a React element.
+
+5. **Renders the React Element**:
+   - `root.render(reactElement)`:
+     - Passes the `reactElement` object to the `render` method, which instructs React to display `<h1>Hello from JSX!</h1>` in the browser.
+
+---
+
+### **How It Works Together**
+
+1. **JSX Creation**:
+   - The line `const reactElement = <h1>Hello from JSX!</h1>` uses JSX to create a React element, which is essentially a JavaScript object describing the structure of the UI.
+
+2. **Logging for Debugging**:
+   - `console.log(reactElement)` helps you see the structure of the React element, confirming how React translates JSX into its virtual DOM representation.
+
+3. **Rendering in the DOM**:
+   - `root.render(reactElement)` renders the React element inside the `#root` DOM node, displaying the heading `<h1>Hello from JSX!</h1>` in the browser.
+
+---
+
+### **Key Advantages of Version 4**
+
+1. **Readable Syntax**:
+   - JSX provides a more intuitive and concise way to write UI compared to `React.createElement` (used in previous versions).
+
+2. **Debugging**:
+   - By logging `reactElement`, you can better understand the internal structure of React elements and how JSX compiles into React's underlying API.
+
+3. **Minimal Setup**:
+   - The example focuses on the basics of rendering a simple React element, making it ideal for understanding the core React workflow.
+
+---
+
+### **Comparison with Previous Versions**
+
+| **Feature**            | **Version 1**                     | **Version 2**                        | **Version 3**                        | **Version 4**                     |
+|-------------------------|------------------------------------|---------------------------------------|---------------------------------------|------------------------------------|
+| **JSX**                | ✅ (used)                         | ❌ (not used)                        | ❌ (not used)                        | ✅ (used)                         |
+| **`React.createElement`** | ❌ (implicit via JSX)             | ✅ (explicit)                        | ✅ (explicit)                        | ❌ (implicit via JSX)             |
+| **Console Logging**     | ❌                                | ❌                                   | ✅ (logs element)                    | ✅ (logs element)                 |
+| **Rendering**           | Renders JSX `<h1>`               | Renders `createElement` `<h1>`       | Does not work due to invalid render  | Renders JSX `<h1>`                |
+
+---
+
+### **When to Use This Version**
+- **Learning**: Ideal for beginners to understand the combination of JSX, React elements, and rendering.
+- **Debugging**: Useful for visualizing the structure of React elements in the console.
+- **Small Applications**: Works well for small apps or isolated testing of JSX.
+
+This version demonstrates a clean, modern, and practical approach to rendering elements in React using JSX.
