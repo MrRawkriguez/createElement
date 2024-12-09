@@ -47,7 +47,25 @@ root.render(
 
 ```
 
-Let’s analyze and explain the three versions of `main.jsx`. Each version demonstrates different ways of using React's rendering methods and elements.
+# main.jsx version 4
+
+```jsx
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+const root = createRoot(document.getElementById('root'))
+const reactElement = <h1>Hello from JSX!</h1>
+
+console.log(reactElement)
+
+root.render(
+  reactElement
+)
+
+```
+
+Let’s analyze and explain the four versions of `main.jsx`. Each version demonstrates different ways of using React's rendering methods and elements.
 
 ---
 
